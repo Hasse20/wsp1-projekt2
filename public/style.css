@@ -5,3 +5,14 @@ body {
   font-size: x-large;
   margin: 1em;
 }
+
+header {
+  height: 10rem;
+  background-color: rgb(24, 4, 62);
+
+}
+
+footer {
+  height: 2rem;
+  background-color: #000000;
+}
