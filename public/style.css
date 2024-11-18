@@ -3,16 +3,17 @@ body {
   color: #666;
   background-color: #000000;
   font-size: x-large;
-  margin: 1em;
 }
 
 header {
-  height: 10rem;
+  height: 100rem;
   background-color: rgb(24, 4, 62);
+  width: auto;
 
 }
 
 footer {
-  height: 2rem;
+  height: 5rem;
   background-color: #000000;
+  align-content: center;
 }
