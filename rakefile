@@ -1,4 +1,4 @@
-task :seed do 
+task :seed do
     require "bundler"
     Bundler.require
     require_relative 'db/seeder'
@@ -10,7 +10,7 @@ task :dev do
 end
 
 task :run do
-    #todo
+    sh 'bundle exec rackup --host 0.0.0.0'
 end
 
 task :test do
