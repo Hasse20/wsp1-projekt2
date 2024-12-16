@@ -1,7 +1,6 @@
 require 'sqlite3'
 
 class Seeder
-
   def self.seed!
     drop_tables
     create_tables
@@ -13,25 +12,30 @@ class Seeder
   end
 
   def self.create_tables
-    db.execute('CREATE TABLE lifts (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                deadlift FLOAT,
-                shoulderpress FLOAT,
-                benchpress FLOAT)')
+    db.execute(<<-SQL)
+      CREATE TABLE lifts (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        deadlift FLOAT NOT NULL,
+        shoulderpress FLOAT NOT NULL,
+        benchpress FLOAT NOT NULL
+      )
+    SQL
   end
+
   def self.populate_tables
-    db.execute('INSERT INTO lifts (deadlift, shoulderpress, benchpress) VALUES (40, 20, 30)')
+    db.execute(<<-SQL, [40.0, 20.0, 30.0])
+      INSERT INTO lifts (deadlift, shoulderpress, benchpress)
+      VALUES (?, ?, ?)
+    SQL
   end
 
   private
+
   def self.db
-    return @db if @db
-    @db = SQLite3::Database.new('db/fit5x.sqlite')
-    @db.results_as_hash = true
-    @db
+    @db ||= SQLite3::Database.new('./fit5x.sqlite').tap do |db|
+      db.results_as_hash = true
+    end
   end
 end
-
-
 
 Seeder.seed!

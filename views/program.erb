@@ -3,81 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>fit5x Training Program - Program</title>
+    <title>Training Program</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 1rem;
-        }
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 1rem;
-        }
-        main {
-            padding: 2rem;
             max-width: 800px;
             margin: 0 auto;
+            padding: 2rem;
+            background-color: #f9f9f9;
         }
-        h1, h2 {
+        h1 {
             color: #333;
         }
-        .program-description {
-            background-color: #f4f4f4;
-            padding: 1rem;
-            border-radius: 5px;
-            margin-bottom: 2rem;
+        ul {
+            list-style: none;
+            padding: 0;
         }
-        .training-todo {
-            border: 2px dashed #ccc;
-            padding: 1rem;
-            margin-top: 2rem;
-            min-height: 200px;
+        li {
+            margin: 0.5rem 0;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">fit5x</div>
-            <div class="nav-links">
-                <a href="index">Main</a>
-                <a href="program">Program</a>
-            </div>
-        </nav>
-    </header>
-    <main>
-        <h1>fit5x Training Program</h1>
-        <div class="program-description">
-            <h2>About Our Program</h2>
-            <p>The fit5x training program is designed to help you achieve your fitness goals through a combination of targeted exercises, proper nutrition, and expert guidance. Our program is flexible and can be tailored to your specific needs and fitness level.</p>
-        </div>
-        <h2>Your Training To-Do List</h2>
-        <p>Below you'll find your personalized training to-do list. This list will be updated regularly to keep you on track with your fitness goals. Each lift will get a separate day. We recommend Friday, Saturday and Sunday. This will give you 4 days of rest which is optimal.</p>
-        <div class="training-todo">
-            <ul id="todo-list">
-                <li>User id: <%= @weight["id"] %></li>
-                <li>Deadlift 1x5: <%= @weight["deadlift"] %></li>
-                <li>Shoulderpress 3x5: <%= @weight["shoulderpress"] %></li>
-                <li>Benchpress 3x5: <%= @weight["benchpress"] %></li>
-            </ul>
-        </div>
-    </main>
+    <h1>Your Training Program</h1>
+
+    <ul>
+        <li>User ID: <%= @lift["id"] %></li>
+        <li>Deadlift: <%= @lift["deadlift"] %> kg</li>
+        <li>Shoulder Press: <%= @lift["shoulderpress"] %> kg</li>
+        <li>Bench Press: <%= @lift["benchpress"] %> kg</li>
+    </ul>
+
+    <form action="/lifts/<%= @lift['id'] %>/update" method="post">
+        <button type="submit">Add 2.5kg</button>
+    </form>
 </body>
 </html>
