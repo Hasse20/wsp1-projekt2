@@ -12,7 +12,7 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    erb (:index)
+    erb(:index)
   end
 
   get '/index' do
@@ -20,7 +20,7 @@ class App < Sinatra::Base
   end
 
   get '/program' do
-    @lift = db.execute('SELECT * FROM lifts ORDER BY id DESC LIMIT 1').first
+    @lifts = db.execute('SELECT * FROM lifts')
     erb(:program)
   end
 
@@ -54,5 +54,10 @@ class App < Sinatra::Base
     db.execute("UPDATE lifts SET deadlift = ?, shoulderpress = ?, benchpress = ? WHERE id = ?", [updated_deadlift, updated_shoulderpress, updated_benchpress, id])
 
     redirect "/lifts/#{id}"
+  end
+
+  get '/program' do
+    @lift = db.execute('SELECT * FROM lifts ORDER BY id DESC LIMIT 1').first
+    erb(:program)
   end
 end
