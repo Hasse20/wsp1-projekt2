@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sqlite3'
 
+
 class App < Sinatra::Base
   def db
     return @db if @db
