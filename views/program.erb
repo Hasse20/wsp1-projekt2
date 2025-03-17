@@ -39,13 +39,13 @@
     <h1>Your Training Program</h1>
 
     <ul>
-        <li>User ID: <%= @lift["id"] %></li>
-        <li>Deadlift: <%= @lift["deadlift"] %> kg</li>
-        <li>Shoulder Press: <%= @lift["shoulderpress"] %> kg</li>
-        <li>Bench Press: <%= @lift["benchpress"] %> kg</li>
+        <li>User ID: <%= @lifts["id"] %></li>
+        <li>Deadlift: <%= @lifts["deadlift"] %> kg</li>
+        <li>Shoulder Press: <%= @lifts["shoulderpress"] %> kg</li>
+        <li>Bench Press: <%= @lifts["benchpress"] %> kg</li>
     </ul>
 
-    <form action="/lifts/<%= @lift['id'] %>/update" method="post">
+    <form action="/lifts/<%= @lifts['id'] %>/update" method="post">
         <button type="submit">Add 2.5kg</button>
     </form>
 </body>

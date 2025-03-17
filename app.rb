@@ -21,7 +21,10 @@ class App < Sinatra::Base
   end
 
   get '/program' do
-    @lifts = db.execute('SELECT * FROM lifts')
+    @lifts = db.execute('SELECT * FROM lifts').first
+
+    p @lifts
+
     erb(:program)
   end
 
